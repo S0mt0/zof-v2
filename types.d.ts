@@ -1,0 +1,128 @@
+interface IUser {
+  name: string;
+  email: string;
+  image: string;
+  emailVerified?: Date | null;
+}
+
+type BlogStatus = "published" | "draft" | "scheduled";
+
+interface IBlog {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  bannerImage: string;
+  status: BlogStatus;
+  featured: boolean;
+  tags: string[];
+  comments: IBlogComment[];
+  views: number;
+  createdBy: string;
+  authorId?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  author?: IUser | null;
+}
+
+interface IBlogComment {
+  id: string;
+  comment: string;
+  authorName: string;
+  authorEmail: string;
+  blogId: string;
+  blog?: Blog;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface IEventComment {
+  id: string;
+  comment: string;
+  authorName: string;
+  authorEmail: string;
+  eventId: string;
+  event?: IEvent;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+type EventStatus =
+  | "upcoming"
+  | "draft"
+  | "completed"
+  | "cancelled"
+  | "happening";
+
+type PublicEventStatus = "upcoming" | "completed" | "happening";
+
+interface IEvent {
+  id: string;
+  name: string;
+  slug: string;
+  detail: string;
+  excerpt: string;
+  organizer: string;
+  date: Date;
+  startTime: string;
+  endTime: string;
+  location: string;
+  maxAttendees?: number | null;
+  currentAttendees: number;
+  bannerImage: string;
+  status: EventStatus;
+  featured: boolean;
+  tags: string[];
+  ticketPrice: string;
+  registrationRequired: boolean;
+  createdBy: string;
+  createdAt: Date;
+  updatedAt: Date;
+  createdByUser?: IUser | null;
+}
+
+interface IMessage {
+  sender: string;
+  email: string;
+  subject: string;
+  content: string;
+}
+
+interface ITeamMember {
+  name: string;
+  role: string;
+  email: string;
+  bio?: string | null;
+  avatar?: string | null;
+}
+
+interface IFoundationInfo {
+  name: string;
+  email: string;
+  description?: string | null;
+  address?: string | null;
+  phone?: string | null;
+}
+
+interface IWebsiteSettings {
+  maintenanceMode: boolean;
+  blogComments: boolean;
+  eventComments: boolean;
+  eventRegistration: boolean;
+}
+
+interface ApiResponse<T> {
+  message: string;
+  data?: T;
+}
+interface ApiPaginatedResponse<T> extends ApiResponse {
+  data: T[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+}

@@ -1,0 +1,26 @@
+import { Skeleton } from "@/components/ui/skeleton";
+
+export function SkeletonCard() {
+  return (
+    <div className="flex flex-col space-y-3">
+      <Skeleton className="h-52 w-full max-w-2xl rounded" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-full max-w-2xl" />
+        <Skeleton className="h-4 w-[200px]" />
+        <Skeleton className="h-4 w-[80px]" />
+      </div>
+    </div>
+  );
+}
+
+export const SkeletonItems = () => {
+  return (
+    <section className="py-20 px-6 md:px-14">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 my-10">
+        {[...new Array(3)].map((_, idx) => (
+          <SkeletonCard key={idx} />
+        ))}
+      </div>
+    </section>
+  );
+};
