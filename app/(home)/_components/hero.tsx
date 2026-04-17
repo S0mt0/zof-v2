@@ -1,5 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export const Hero = () => {
@@ -24,11 +25,18 @@ export const Hero = () => {
 
   return (
     <header
-      className="h-screen bg-green-700 bg-center bg-cover bg-no-repeat overflow-hidden relative w-full p-6 md:px-14 max-h-[700px]"
+      className="h-screen bg-green-700 bg-center bg-cover bg-no-repeat overflow-hidden relative w-full p-6 md:px-14 max-h-175"
       style={{
         backgroundImage: `url(${heroImages[currentImageIndex]})`,
       }}
     >
+      <Image
+        src="/assets/img/hero-brush.png"
+        alt="brush stroke"
+        className="absolute bottom-0 left-0 z-10"
+        width={400}
+        height={200}
+      />
       <AnimatePresence mode="wait">
         <motion.img
           key={currentImageIndex}

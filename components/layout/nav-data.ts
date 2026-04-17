@@ -12,12 +12,12 @@ export const navLinks = [
     label: "About Us",
   },
   {
-    href: "/programs",
-    label: "Programs",
-  },
-  {
     href: "/blog",
     label: "Blog",
+  },
+  {
+    href: "/gallery",
+    label: "Photo Gallery",
   },
   {
     href: "/contact",
@@ -30,16 +30,19 @@ export const navContact = [
     prompt: "Locate Address:",
     info: "Garki Area 11 FCT, Abuja Nigeria.",
     icon: MapPin,
+    bgImage: "blob_4lobe.png",
   },
   {
     prompt: "Call us any time:",
     info: "+2348037864683",
     icon: Phone,
+    bgImage: "blob_4lobe.png",
   },
   {
     prompt: "Email us any time:",
     info: "onyekazita@gmail.com",
     icon: Mail,
+    bgImage: "blob_4lobe.png",
   },
 ];
 
