@@ -1,9 +1,11 @@
 import { Suspense } from "react";
 
 import { getAllBlogs, getAllEvents } from "@/lib/api";
-import { CTABanner } from "./_components/cta-banner";
+import { CommunityImpact } from "./_components/community-impact";
+import { Faqs } from "./_components/faqs";
 import { Hero } from "./_components/hero";
 import { OurValues } from "./_components/our-values";
+import { Testimonials } from "./_components/testimonials";
 import { WhoWeAre } from "./_components/who-we-are";
 import { FeaturedBlogs } from "./_components/featured-blogs";
 import { SkeletonItems } from "@/components/common/skeleton-items";
@@ -37,13 +39,16 @@ export default async function HomePage() {
       <Hero />
       <WhoWeAre />
       <OurValues />
+      <CommunityImpact />
+      <Testimonials />
+      <Faqs />
       <Suspense fallback={<SkeletonItems />}>
         <FeaturedBlogs blogsDataPromise={blogsDataPromise} />
       </Suspense>
       <Suspense>
         <FeaturedEvents eventsDataPromise={eventsDataPromise} />
       </Suspense>
-      <CTABanner />
+      {/* <CTABanner /> */}
     </main>
   );
 }

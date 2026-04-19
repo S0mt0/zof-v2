@@ -25,7 +25,7 @@ const DonateButton = ({ className }: { className?: string }) => (
     asChild
     variant={"link"}
     className={cn(
-      "bg-accent text-white px-10 h-18 md:h-14 rounded-full hover:no-underline font-semibold cursor-pointer hover:bg-secondary transition-all duration-300",
+      "bg-secondary text-white px-10 h-18 md:h-14 rounded-full hover:no-underline font-semibold cursor-pointer hover:bg-accent transition-all duration-300",
       className
     )}
   >
