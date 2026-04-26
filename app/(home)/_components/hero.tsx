@@ -25,7 +25,7 @@ export const Hero = () => {
 
   return (
     <header
-      className="h-screen bg-slate-50 bg-center bg-cover bg-no-repeat overflow-hidden relative w-full p-6 md:px-14 max-h-175"
+      className="h-screen bg-slate-50 bg-center bg-cover bg-no-repeat overflow-hidden relative w-full p-6 md:px-14 max-h-210"
       style={{
         backgroundImage: `url(${heroImages[currentImageIndex]})`,
       }}
@@ -33,7 +33,7 @@ export const Hero = () => {
       <Image
         src="/assets/img/hero-brush.png"
         alt="brush stroke"
-        className="absolute bottom-0 left-0 z-10 h-auto"
+        className="absolute bottom-0 left-0 z-10 h-auto w-64 lg:w-72"
         width={400}
         height={200}
       />

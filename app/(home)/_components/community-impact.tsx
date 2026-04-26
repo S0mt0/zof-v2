@@ -50,10 +50,17 @@ export const CommunityImpact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
-          className="relative overflow-visible rounded-[2rem] bg-primary px-6 py-10 text-white shadow-[0_35px_90px_rgba(15,23,42,0.12)] md:px-10 lg:px-14 lg:py-12"
+          className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-10 text-white shadow-[0_35px_90px_rgba(15,23,42,0.12)] md:px-10 lg:px-14 lg:py-12"
         >
+          {/* bg color start */}
+          <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.95),rgba(15,23,42,0.9))]" />
+          <div className="absolute -right-16 top-10 h-40 w-40 rounded-full border border-white/10" />
+          <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-secondary/15 blur-3xl" />
+          {/* bg color end */}
+
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%)]" />
           <div className="absolute left-0 top-0 hidden h-72 w-72 rounded-full border border-secondary/20 lg:block" />
+
           <div className="absolute left-[22%] top-0 hidden h-64 w-64 lg:block">
             <svg
               viewBox="0 0 260 220"
@@ -70,7 +77,7 @@ export const CommunityImpact = () => {
             </svg>
           </div>
 
-          <div className="absolute -right-1 -top-3 w-full max-w-[30%] hidden lg:block">
+          <div className="absolute -right-2 -top-5 w-full max-w-[35%] hidden lg:block">
             <div className="relative h-full w-full">
               <Image
                 src="/assets/img/polygon.png"
@@ -98,17 +105,6 @@ export const CommunityImpact = () => {
                 who joins expands what we can do on the ground.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                {highlights.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-sm"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   href="/contact"
@@ -122,35 +118,6 @@ export const CommunityImpact = () => {
                 </p>
               </div>
             </div>
-
-            {/* <div className="relative lg:ml-auto lg:w-full lg:max-w-md">
-              <div className="rounded-[1.75rem] border border-white/10 bg-white/8 p-6 text-slate-800 shadow-[0_25px_60px_rgba(15,23,42,0.14)] backdrop-blur-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-700/80">
-                  Active network
-                </p>
-                <p className="mt-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-                  100+
-                </p>
-                <p className="mt-2 text-sm font-semibold sm:text-base">
-                  Volunteers Joined
-                </p>
-                <div className="mt-6 h-px bg-slate-700/10" />
-                <div className="mt-6 grid grid-cols-2 gap-4 text-left">
-                  <div className="rounded-2xl bg-white/55 p-4">
-                    <p className="text-2xl font-bold text-primary">24/7</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.16em] text-slate-600">
-                      Community response
-                    </p>
-                  </div>
-                  <div className="rounded-2xl bg-white/55 p-4">
-                    <p className="text-2xl font-bold text-primary">12+</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.16em] text-slate-600">
-                      Ongoing initiatives
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </motion.div>
 
@@ -167,7 +134,7 @@ export const CommunityImpact = () => {
                 <Icon className="h-7 w-7" />
               </div>
               <div>
-                <p className="text-4xl font-bold tracking-tight text-primary">
+                <p className="text-4xl font-extrabold tracking-tight text-primary">
                   {value}
                 </p>
                 <p className="mt-1 text-sm text-slate-500">{label}</p>

@@ -20,13 +20,6 @@ const featureItems = [
   },
 ];
 
-const stats = [
-  { value: "15k+", label: "Lives Reached" },
-  { value: "1k+", label: "Women Empowered" },
-  { value: "400+", label: "Youth Supported" },
-  { value: "35k+", label: "Volunteer Hours" },
-];
-
 export const WhoWeAre = () => {
   return (
     <section className="relative overflow-hidden bg-white px-6 py-24 md:px-14 lg:py-28">
@@ -52,7 +45,7 @@ export const WhoWeAre = () => {
             </div>
 
             <div className="relative min-h-[520px]">
-              <div className="relative h-[420px] w-[72%] overflow-hidden rounded-[2rem] border-4 border-white shadow-[0_28px_70px_rgba(15,23,42,0.18)] sm:h-[500px]">
+              <div className="relative h-[420px] w-[80%] md:w-[72%] overflow-hidden rounded-[2rem] border-4 border-white shadow-[0_28px_70px_rgba(15,23,42,0.18)] sm:h-[500px]">
                 <Image
                   src="/assets/img/zof_child.jpg"
                   alt="Children gathered at a community support center"
@@ -62,7 +55,7 @@ export const WhoWeAre = () => {
                 />
               </div>
 
-              <div className="absolute right-0 top-6 h-[190px] w-[45%] overflow-hidden rounded-[1.75rem] border-4 border-white bg-zinc-900 shadow-2xl sm:h-[215px]">
+              <div className="absolute animate-float right-0 top-6 h-[190px] w-[45%] overflow-hidden rounded-[1.75rem] border-4 border-white bg-zinc-900 shadow-2xl sm:h-[215px]">
                 <Image
                   src="/assets/img/child_group.jpg"
                   alt="Children smiling together during a foundation activity"
@@ -72,7 +65,7 @@ export const WhoWeAre = () => {
                 />
               </div>
 
-              <div className="absolute bottom-0 right-8 h-[190px] w-[52%] overflow-hidden rounded-[1.75rem] border-4 border-white bg-zinc-900 shadow-2xl sm:h-[215px]">
+              <div className="animate-sideways-bounce absolute bottom-0 right-8 h-[190px] w-[52%] overflow-hidden rounded-[1.75rem] border-4 border-white bg-zinc-900 shadow-2xl sm:h-[215px]">
                 <Image
                   src="/assets/img/zof_led_community.jpg"
                   alt="A mother and children receiving support from the foundation"
@@ -95,10 +88,10 @@ export const WhoWeAre = () => {
               ❤
             </div>
 
-            <p className="font-semibold uppercase tracking-[0.24em] text-secondary">
+            <p className="font-semibold capitalize text-2xl tracking-tight text-secondary font-caveat">
               Welcome to Zita-Onyeka Foundation
             </p>
-            <h2 className="mt-4 max-w-xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
+            <h2 className="mt-4 max-w-xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl">
               Transforming lives, one opportunity at a time.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600">
@@ -111,8 +104,10 @@ export const WhoWeAre = () => {
             <div className="mt-10 space-y-6">
               {featureItems.map(({ title, description, icon: Icon }) => (
                 <div key={title} className="flex items-start gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-primary/15 bg-white text-primary shadow-sm">
-                    <Icon className="h-7 w-7" />
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-full bg-yellow-100">
+                      <span className="text-yellow-700 font-bold">✓</span>
+                    </div>
                   </div>
                   <div>
                     <h3 className="text-2xl font-semibold text-slate-900">
@@ -135,39 +130,6 @@ export const WhoWeAre = () => {
             </Link>
           </motion.div>
         </div>
-
-        {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-20 grid gap-6 rounded-[2rem] border border-slate-200/80 bg-white/90 px-8 py-10 shadow-[0_25px_80px_rgba(15,23,42,0.08)] md:grid-cols-4 md:gap-0"
-        >
-          {stats.map(({ value, label }, index) => (
-            <div
-              key={label}
-              className={[
-                "text-center",
-                index !== stats.length - 1
-                  ? "md:border-r md:border-slate-200"
-                  : "",
-              ].join(" ")}
-            >
-              <p
-                className={
-                  index % 2 === 1
-                    ? "text-5xl font-bold text-secondary"
-                    : "text-5xl font-bold text-primary"
-                }
-              >
-                {value}
-              </p>
-              <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-                {label}
-              </p>
-            </div>
-          ))}
-        </motion.div> */}
       </div>
     </section>
   );

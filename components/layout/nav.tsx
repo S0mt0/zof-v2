@@ -98,11 +98,11 @@ export const Navbar = () => {
       </div>
 
       {/* Main nav */}
-      <div className="h-22 flex items-center md:h-7 bg-slate-50 relative">
+      <div className="h-18 flex items-center md:h-7 bg-slate-50 relative">
         <div className="lg:w-[98%] w-[90%] gap-1 md:gap-0 flex items-center justify-between z-3 h-fit absolute top-1/2 md:top-0 md:translate-y-0 -translate-y-1/2 inset-0 mx-auto">
-          <div className="bg-primary gap-1 text-slate-50 rounded-full flex items-center justify-between px-1.5 md:px-8 h-20 md:h-14 flex-1">
-            <Logo className="w-18 h-auto shrink-0 md:hidden" />
-            <DonateButton className="md:hidden px-6" />
+          <div className="bg-primary gap-1 text-slate-50 rounded-full flex items-center justify-between px-1.5 md:px-8 h-16 md:h-14 flex-1">
+            <Logo className="w-14 h-auto shrink-0 md:hidden" />
+            <DonateButton className="md:hidden px-6 h-14" />
             {/* Left nav links */}
             <ul className="md:flex items-center gap-8 hidden">
               {navLinks.map(({ href, label }) => (
