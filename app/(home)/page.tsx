@@ -7,6 +7,7 @@ import { Hero } from "./_components/hero";
 import { MeetVolunteers } from "./_components/meet-volunteers";
 import { OurValues } from "./_components/our-values";
 import { Testimonials } from "./_components/testimonials";
+import { UpcomingEventsShowcase } from "./_components/upcoming-events-showcase";
 import { VideoBanner } from "./_components/video-banner";
 import { WhoWeAre } from "./_components/who-we-are";
 import { FeaturedBlogs } from "./_components/featured-blogs";
@@ -45,14 +46,14 @@ export default async function HomePage() {
       <CommunityImpact />
       <VideoBanner />
       <Testimonials />
+      <UpcomingEventsShowcase />
       <Faqs />
-      <Suspense fallback={<SkeletonItems />}>
+      {/* <Suspense fallback={<SkeletonItems />}>
         <FeaturedBlogs blogsDataPromise={blogsDataPromise} />
       </Suspense>
       <Suspense>
         <FeaturedEvents eventsDataPromise={eventsDataPromise} />
-      </Suspense>
-      {/* <CTABanner /> */}
+      </Suspense> */}
     </main>
   );
 }
