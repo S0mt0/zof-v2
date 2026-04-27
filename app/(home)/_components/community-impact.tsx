@@ -43,7 +43,7 @@ const highlights = [
 
 export const CommunityImpact = () => {
   return (
-    <section className="overflow-visible bg-white px-4 py-20 lg:py-24">
+    <section className="overflow-visible bg-white px-4 py-20 lg:py-24 border-b">
       <div className="mx-auto w-full max-w-[97%]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}

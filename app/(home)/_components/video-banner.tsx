@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaPlay } from "react-icons/fa6";
+import { cn } from "@/lib/utils";
 
 export const VideoBanner = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,13 +37,10 @@ export const VideoBanner = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="relative overflow-hidden rounded-[2rem] shadow-[0_28px_70px_rgba(15,23,42,0.14)]"
         >
-          <div className="absolute inset-y-0 left-0 z-20 hidden w-16 bg-[url('/assets/img/testimonial-bg.png')] bg-cover bg-left opacity-95 md:block" />
-          <div className="absolute inset-y-0 right-0 z-20 hidden w-16 scale-x-[-1] bg-[url('/assets/img/testimonial-bg.png')] bg-cover bg-left opacity-95 md:block" />
-
           <div className="relative h-[34vh] min-h-[240px] max-h-[70vh] md:h-[48vh] lg:h-[56vh]">
             {!hasStarted ? (
               <Image
-                src="/assets/img/zof_led_community.jpg"
+                src="/assets/img/outreach_banner.JPEG"
                 alt="Community outreach moment"
                 fill
                 sizes="100vw"
@@ -53,34 +51,37 @@ export const VideoBanner = () => {
 
             <video
               ref={videoRef}
-              className={[
+              className={cn(
                 "absolute inset-0 h-full w-full object-cover transition-opacity duration-300",
-                hasStarted ? "opacity-100" : "opacity-0",
-              ].join(" ")}
+                hasStarted ? "opacity-100" : "opacity-0"
+              )}
               controls
               playsInline
               preload="metadata"
-              poster="/assets/img/zof_led_community.jpg"
+              poster="/assets/img/outreach_banner.JPEG"
             >
-              <source src="/assets/img/outreach_video.mp4" type="video/mp4" />
+              <source
+                src="https://zitaonyekafoundation.s3.eu-west-2.amazonaws.com/videos/outreach_video.mp4"
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
 
             <div
-              className={[
+              className={cn(
                 "pointer-events-none absolute inset-0 transition-opacity duration-300",
-                hasStarted ? "opacity-0" : "opacity-100",
-              ].join(" ")}
+                hasStarted ? "opacity-0" : "opacity-100"
+              )}
             >
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,47,39,0.25),rgba(14,47,39,0.52))]" />
               <div className="absolute inset-0 bg-primary/35 mix-blend-multiply" />
             </div>
 
             <div
-              className={[
+              className={cn(
                 "absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300",
-                hasStarted ? "pointer-events-none opacity-0" : "opacity-100",
-              ].join(" ")}
+                hasStarted ? "pointer-events-none opacity-0" : "opacity-100"
+              )}
             >
               <button
                 type="button"

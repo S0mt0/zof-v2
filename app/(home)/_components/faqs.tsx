@@ -120,7 +120,7 @@ export const Faqs = () => {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="overflow-hidden bg-[#f8eddc] rounded-4xl border-[#efe7da] mt-1"
+                      className="overflow-hidden bg-[#fdf5e5] rounded-4xl border-[#efe7da] mt-1"
                     >
                       <div className="px-6 py-5 text-sm leading-8 text-slate-600 md:px-16">
                         {answer}
