@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Quote, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Quote, Star } from "lucide-react";
 
 import {
   Carousel,
@@ -12,6 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -102,14 +102,14 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-4xl text-center"
         >
-          <p className="inline-flex items-center gap-2 text-sm font-medium text-primary">
-            <span className="h-2 w-2 rounded-full bg-[#f36a3d]" />
-            Testimonial
+          <p className="inline-flex items-center gap-3 font-caveat text-3xl font-semibold tracking-tight text-[#e6a12d]">
+            {/* <Heart className="h-6 w-6 text-primary" /> */}
+            Testimonials
           </p>
-          <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
-            Stories of hope shared by families and supporters
+          <h2 className="mt-4 text-2xl font-bold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
+            What People Are Saying?
           </h2>
         </motion.div>
 
@@ -122,7 +122,7 @@ export const Testimonials = () => {
         >
           <Carousel
             setApi={setApi}
-            opts={{ align: "start", loop: true }}
+            opts={{ align: "start", loop: true, slidesToScroll: 2 }}
             className="relative"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -131,52 +131,46 @@ export const Testimonials = () => {
               {testimonials.map(({ name, role, image, quote }, index) => (
                 <CarouselItem
                   key={`${name}-${index}`}
-                  className="pl-6 md:basis-1/2 xl:basis-1/3"
+                  className="pl-6 pt-10 md:basis-1/2"
                 >
                   <article
-                    className={[
-                      "flex h-full min-h-[320px] flex-col rounded-[2rem] border border-[#f3e7d8] bg-[#fcf7ef] p-8 shadow-[0_20px_50px_rgba(15,23,42,0.04)] transition-all duration-300",
-                      selectedIndex === index
-                        ? "border-[#f1dcc2] bg-[#fff8ee]"
-                        : "opacity-92",
-                    ].join(" ")}
+                    className={cn(
+                      "relative min-h-85 px-8 pb-14 pt-10 transition-all duration-300 cursor-grab select-none",
+                      selectedIndex === index ? "opacity-100" : "opacity-92"
+                    )}
+                    style={{
+                      backgroundImage: "url('/assets/img/testimonial-bg.png')",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      backgroundSize: "100% 100%",
+                    }}
                   >
-                    <div className="flex items-center gap-1 text-[#f36a3d]">
-                      {Array.from({ length: 5 }).map((_, starIndex) => (
-                        <Star
-                          key={starIndex}
-                          className="h-4 w-4 fill-current"
-                          strokeWidth={1.8}
-                        />
-                      ))}
+                    <div className="absolute right-0 -top-5 flex h-20 w-26 items-start justify-center rounded-full rounded-tr-none bg-primary px-5 py-5 isolate">
+                      <Quote className="h-7 w-7 text-secondary fill-secondary" />
                     </div>
 
-                    <p className="mt-8 flex-1 text-[1.02rem] leading-8 text-slate-600">
-                      {quote}
-                    </p>
-
-                    <div className="mt-10 flex items-end justify-between gap-4">
-                      <div className="flex items-center gap-4">
-                        <div className="relative h-13 w-13 overflow-hidden rounded-full ring-4 ring-white">
+                    <div className="relative z-10">
+                      <div className="-mt-3 flex items-center gap-5">
+                        <div className="relative h-30 w-30 shrink-0 overflow-hidden rounded-full bg-secondary border-3 border-secondary">
                           <Image
                             src={image}
                             alt={name}
-                            fill
-                            sizes="52px"
-                            className="object-cover"
+                            width={300}
+                            height={300}
+                            className="object-cover rounded-full"
                           />
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold text-slate-900">
+                          <h3 className="text-lg sm:text-3xl tracking-tight font-bold text-slate-950">
                             {name}
                           </h3>
-                          <p className="text-sm text-slate-500">{role}</p>
+                          <p className="mt-1 text-slate-500">{role}</p>
                         </div>
                       </div>
 
-                      <div className="rounded-2xl bg-[#fff1d3] p-3 text-[#efc24f]">
-                        <Quote className="h-6 w-6 fill-current" />
-                      </div>
+                      <p className="mt-6 max-w-130 mx-auto  text-slate-600">
+                        “{quote}”
+                      </p>
                     </div>
                   </article>
                 </CarouselItem>

@@ -29,7 +29,7 @@ const focusAreas = [
 export const OurValues = () => {
   return (
     <section className="relative overflow-hidden bg-[#f8f4ec] px-6 py-20 md:px-14 lg:py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(174,159,76,0.2),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(25,95,74,0.12),transparent_22%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(174,159,76,0.2),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(25,95,74,0.18),transparent_22%)]" />
       <div
         className="absolute inset-0 opacity-[0.18] mix-blend-multiply"
         style={{ backgroundImage: "url('/assets/img/bg-grey-texture.png')" }}
@@ -99,7 +99,7 @@ export const OurValues = () => {
                   viewport={{ once: true, amount: 0.2 }}
                   className="relative rounded-[2rem] border border-white/70 bg-white/85 p-7 shadow-[0_20px_50px_rgba(15,23,42,0.05)]"
                 >
-                  <div className="absolute left-0 top-8 hidden h-10 w-10 -translate-x-1/2 rounded-full border-8 border-[#f8f4ec] bg-primary xl:block" />
+                  <div className="absolute left-0 top-8 hidden h-10 w-10 -translate-x-1/2 rounded-full border-8 border-[#F8F3EC] bg-primary xl:block" />
 
                   <div className="flex items-start gap-5">
                     <div className="min-w-14 text-4xl font-bold leading-none text-primary/20">

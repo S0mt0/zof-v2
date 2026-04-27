@@ -99,9 +99,9 @@ export const Faqs = () => {
                     </span>
 
                     <span
-                      className={[
-                        "flex h-10 w-10 shrink-0 items-center justify-center text-[#f36a3d]",
-                      ].join(" ")}
+                      className={
+                        "flex h-10 w-10 shrink-0 items-center justify-center text-secondary"
+                      }
                     >
                       {isOpen ? (
                         <Minus className="h-5 w-5" />
@@ -120,7 +120,7 @@ export const Faqs = () => {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="overflow-hidden bg-[#faeed9] rounded-4xl border-[#efe7da]"
+                      className="overflow-hidden bg-[#f8eddc] rounded-4xl border-[#efe7da] mt-1"
                     >
                       <div className="px-6 py-5 text-sm leading-8 text-slate-600 md:px-16">
                         {answer}
