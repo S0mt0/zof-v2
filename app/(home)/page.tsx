@@ -17,8 +17,8 @@ export const revalidate = 0;
 
 export default async function HomePage() {
   const blogsDataPromise = getAllBlogs({
+    limit: 3,
     fields: ["bannerImage", "title", "slug", "excerpt", "publishedAt"],
-    featured: "featured",
   });
 
   return (

@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-import { Logo } from "../common/logo";
 import { navSocialLinks } from "./nav-data";
 
 const quickLinks = [
@@ -15,27 +14,6 @@ const supportLinks = [
   { href: "/contact", label: "Contact Us" },
   { href: "/events", label: "Upcoming Events" },
   { href: "/contact", label: "Volunteer With Us" },
-];
-
-const contactItems = [
-  {
-    href: "https://maps.google.com/?q=16,+Nkwere+Street,+Garki+Area+11,+FCT,+Abuja,+Nigeria",
-    label: "Visit us",
-    value: "16, Nkwere Street, Garki Area 11 FCT, Abuja Nigeria.",
-    icon: MapPin,
-  },
-  {
-    href: "tel:+2348037864683",
-    label: "Call us",
-    value: "+234 803 786 4683",
-    icon: Phone,
-  },
-  {
-    href: "mailto:onyekazita@gmail.com",
-    label: "Email us",
-    value: "onyekazita@gmail.com",
-    icon: Mail,
-  },
 ];
 
 export const Footer = () => {
@@ -70,43 +48,30 @@ export const Footer = () => {
               Let&apos;s keep hope in motion
             </div>
 
-            <div className="mt-6 flex items-center gap-4">
-              <div className="rounded-2xl bg-white px-3 py-2 shadow-sm">
-                <Logo className="h-12 w-12 object-contain sm:h-14 sm:w-14" />
-              </div>
-              <div>
-                <p className="text-xl font-extrabold tracking-tight sm:text-2xl">
-                  Zita-Onyeka Foundation
-                </p>
-                <p className="mt-1 max-w-xl text-sm leading-7 text-white/78 sm:text-base">
-                  Empowering women, youth, and underserved communities through
-                  practical support, education, and compassionate outreach.
-                </p>
-              </div>
-            </div>
+            <p className="mt-6 text-xl font-extrabold tracking-tight sm:text-2xl">
+              Zita-Onyeka Foundation
+            </p>
+            <p className="mt-2 max-w-xl text-sm leading-7 text-white/78 sm:text-base">
+              Empowering women, youth, and underserved communities through
+              practical support, education, and compassionate outreach.
+            </p>
 
-            <div className="mt-8 grid gap-5 sm:grid-cols-3">
-              {contactItems.map(({ href, label, value, icon: Icon }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  className="border-b border-white/10 pb-4 transition-colors hover:text-secondary sm:border-b-0 sm:pb-0"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-secondary">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <p className="mt-4 text-sm font-semibold text-white">
-                    {label}
-                  </p>
-                  <p className="mt-1 text-sm leading-6 text-white/72">
-                    {value}
-                  </p>
-                </Link>
-              ))}
+            <div className="mt-8 space-y-3 text-sm leading-7 text-white/72 sm:text-base">
+              <p>16, Nkwere Street, Garki Area 11 FCT, Abuja Nigeria.</p>
+              <p>
+                <a href="tel:+2348037864683" className="transition-colors hover:text-white">
+                  +234 803 786 4683
+                </a>
+              </p>
+              <p>
+                <a href="mailto:onyekazita@gmail.com" className="transition-colors hover:text-white">
+                  onyekazita@gmail.com
+                </a>
+              </p>
             </div>
           </div>
 
-          <div className="lg:pl-8">
+          <div className="lg:pl-4">
             <p className="inline-flex items-center gap-2 text-sm font-medium text-secondary">
               <span className="h-2 w-2 rounded-full bg-[#f36a3d]" />
               Newsletter
@@ -140,7 +105,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="grid gap-10 px-2 pt-10 sm:px-1 sm:pt-12 lg:grid-cols-[1.2fr_0.85fr_0.85fr_1fr] lg:gap-8">
+        <div className="grid gap-10 px-2 pt-10 sm:px-1 sm:pt-12 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.95fr] lg:gap-8">
           <div className="max-w-md">
             <h3 className="text-xl font-bold text-white sm:text-2xl">
               Reaching out to the world.

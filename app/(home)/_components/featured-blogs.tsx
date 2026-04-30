@@ -14,13 +14,13 @@ export const FeaturedBlogs = async ({ blogsDataPromise }: Props) => {
   if (!blogs || !blogs.length) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#fdf7ef] px-4 py-20 lg:py-24">
-      <div className="pointer-events-none absolute -left-12 top-10 h-64 w-64 rounded-full border border-secondary/30" />
-      <div className="pointer-events-none absolute -right-20 bottom-8 h-80 w-80 rounded-full border border-white/70" />
-      <div className="pointer-events-none absolute -right-6 bottom-20 h-60 w-60 rounded-full border border-white/70" />
-      <div className="pointer-events-none absolute left-4 bottom-6 h-28 w-28 rounded-[42%] bg-secondary/30 blur-[2px]" />
+    <section className="relative overflow-hidden bg-[#fdf8f1] px-4 py-20 lg:py-24">
+      <div className="pointer-events-none absolute -left-16 top-6 h-56 w-56 rounded-full border border-secondary/35" />
+      <div className="pointer-events-none absolute -right-10 bottom-12 h-72 w-72 rounded-full border border-white/65" />
+      <div className="pointer-events-none absolute right-6 bottom-24 h-56 w-56 rounded-full border border-white/65" />
+      <div className="pointer-events-none absolute left-6 bottom-4 h-24 w-24 rounded-[40%] bg-secondary/45 blur-[1px]" />
 
-      <div className="relative mx-auto max-w-7xl">
+      <div className="relative mx-auto max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center gap-2 text-sm font-medium text-primary">
             <span className="h-2 w-2 rounded-full bg-[#f36a3d]" />
@@ -35,22 +35,22 @@ export const FeaturedBlogs = async ({ blogsDataPromise }: Props) => {
 
         <div
           className={cn(
-            "mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3",
-            blogs.length === 1 && "max-w-xl mx-auto",
-            blogs.length === 2 && "max-w-5xl mx-auto xl:grid-cols-2"
+            "mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3",
+            blogs.length === 1 && "mx-auto max-w-sm",
+            blogs.length === 2 && "mx-auto max-w-4xl lg:grid-cols-2"
           )}
         >
           {blogs.map((blog) => (
             <article
               key={blog.slug}
-              className="group overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_60px_rgba(76,57,31,0.08)] transition-transform duration-300 hover:-translate-y-1"
+              className="group overflow-hidden rounded-[1.7rem] bg-white shadow-[0_18px_40px_rgba(76,57,31,0.08)] transition-transform duration-300 hover:-translate-y-1"
             >
               <Link
                 href={`/blogs/${blog.slug}`}
                 aria-label={`Read blog: ${blog.title}`}
                 className="block h-full"
               >
-                <div className="relative aspect-[1.15] overflow-hidden">
+                <div className="relative aspect-[1.18] overflow-hidden">
                   <Image
                     src={blog.bannerImage || "/assets/img/blank-book.jpg"}
                     alt={blog.title}
@@ -60,18 +60,18 @@ export const FeaturedBlogs = async ({ blogsDataPromise }: Props) => {
                   />
                 </div>
 
-                <div className="space-y-4 px-7 py-6">
-                  <h3 className="text-2xl font-semibold leading-snug text-primary">
+                <div className="space-y-4 px-7 py-7">
+                  <h3 className="text-[1.05rem] font-bold leading-8 text-primary sm:text-[1.12rem]">
                     {blog.title}
                   </h3>
 
                   {blog.excerpt ? (
-                    <p className="line-clamp-3 text-base leading-7 text-slate-500">
+                    <p className="line-clamp-3 text-sm leading-8 text-slate-500">
                       {blog.excerpt}
                     </p>
                   ) : null}
 
-                  <span className="inline-flex items-center gap-2 pt-2 text-sm font-semibold text-primary transition-colors group-hover:text-[#f36a3d]">
+                  <span className="inline-flex items-center gap-2 pt-1 text-sm font-semibold text-primary transition-colors group-hover:text-[#f36a3d]">
                     Read More
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
