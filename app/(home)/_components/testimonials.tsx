@@ -108,7 +108,7 @@ export const Testimonials = () => {
             {/* <Heart className="h-6 w-6 text-primary" /> */}
             Testimonials
           </p>
-          <h2 className="mt-4 text-2xl font-bold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h2 className="mt-4 text-3xl font-bold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
             What People Are Saying?
           </h2>
         </motion.div>
@@ -135,7 +135,7 @@ export const Testimonials = () => {
                 >
                   <article
                     className={cn(
-                      "relative min-h-85 px-8 pb-14 pt-10 transition-all duration-300 cursor-grab select-none",
+                      "relative min-h-85 px-8 pb-14 pt-10 transition-all duration-300 cursor-grab active:cursor-grabbing select-none",
                       selectedIndex === index ? "opacity-100" : "opacity-92"
                     )}
                     style={{

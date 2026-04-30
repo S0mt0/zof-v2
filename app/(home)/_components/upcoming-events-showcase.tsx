@@ -36,12 +36,8 @@ const upcomingEvents = [
 
 export const UpcomingEventsShowcase = () => {
   return (
-    <section className="relative overflow-hidden bg-[#fffdf9] px-4 py-20 lg:py-24">
-      <div
-        className="absolute inset-0 opacity-[0.12] mix-blend-multiply"
-        style={{ backgroundImage: "url('/assets/img/bg-grey-texture.png')" }}
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(243,106,61,0.08),transparent_20%),radial-gradient(circle_at_bottom_left,rgba(25,95,74,0.08),transparent_24%)]" />
+    <section className="relative overflow-hidden px-4 py-20 lg:py-24">
+      {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(243,106,61,0.08),transparent_20%),radial-gradient(circle_at_bottom_left,rgba(25,95,74,0.08),transparent_24%)]" /> */}
 
       <div className="relative mx-auto max-w-7xl">
         <motion.div
@@ -62,9 +58,9 @@ export const UpcomingEventsShowcase = () => {
 
           <Link
             href="/events"
-            className="inline-flex w-fit items-center gap-2 rounded-full bg-[#f36a3d] px-6 py-4 text-sm font-semibold text-white shadow-[0_16px_30px_rgba(243,106,61,0.24)] transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#ea5f31]"
+            className="inline-flex w-fit items-center gap-2 rounded-full bg-[#f36a3d] px-6 py-4 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#ea5f31]"
           >
-            <HeartHandshake className="h-4 w-4" />
+            {/* <HeartHandshake className="h-4 w-4" /> */}
             View All Event
           </Link>
         </motion.div>
@@ -81,20 +77,18 @@ export const UpcomingEventsShowcase = () => {
                 delay: index * 0.08,
               }}
               viewport={{ once: true, amount: 0.18 }}
-              className="relative overflow-hidden rounded-[2rem] border border-[#efe7da] bg-white/90 p-6 shadow-[0_20px_55px_rgba(15,23,42,0.05)] md:p-8"
+              className="relative overflow-hidden rounded-[2rem] border border-border/60 p-6 md:p-8 group"
             >
-              <div className="absolute left-1/2 top-0 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f5c4b4] ring-8 ring-[#fffdf9] lg:block" />
-
               <div className="grid gap-8 lg:grid-cols-[0.12fr_0.48fr_0.4fr] lg:items-center">
                 <div className="flex justify-center lg:justify-start">
-                  <div className="flex min-h-[210px] w-[100px] flex-col items-center rounded-[999px] bg-[#faf5ec] px-4 py-5 text-center text-primary shadow-inner">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f36a3d] text-white shadow-[0_12px_24px_rgba(243,106,61,0.28)]">
-                      <CalendarDays className="h-6 w-6" />
+                  <div className="flex xs:min-h-[210px] xs:w-[100px] gap-6 justify-center flex-row xs:flex-col items-center rounded-[999px] bg-[#faf5ec] group-hover:bg-primary group-hover:text-white transition-all duration-300 px-4 py-5 text-center text-primary">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f36a3d] text-white m-0">
+                      <CalendarDays className="xs:h-6 h-5 xs:w-6 w-5" />
                     </div>
-                    <div className="mt-8 text-5xl font-bold leading-none">
+                    <div className="text-4xl xs:text-5xl font-bold leading-none m-0">
                       {event.day}
                     </div>
-                    <div className="mt-3 text-3xl font-medium tracking-tight text-slate-700">
+                    <div className="text-2xl xs:text-3xl font-medium tracking-tight text-slate-700 group-hover:text-white ">
                       {event.month}
                     </div>
                   </div>
