@@ -43,7 +43,7 @@ export const FeaturedBlogs = async ({ blogsDataPromise }: Props) => {
           {blogs.map((blog) => (
             <article
               key={blog.slug}
-              className="group overflow-hidden rounded-[1.7rem] bg-white shadow-[0_18px_40px_rgba(76,57,31,0.08)] transition-transform duration-300 hover:-translate-y-1"
+              className="group overflow-hidden rounded-[1.7rem] bg-white shadow-[0_18px_40px_rgba(76,57,31,0.08)] transition-transform duration-300 hover:-translate-y-1 min-w-[230px] w-fit"
             >
               <Link
                 href={`/blogs/${blog.slug}`}

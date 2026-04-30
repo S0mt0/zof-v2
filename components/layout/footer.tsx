@@ -18,7 +18,7 @@ const supportLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="relative mt-20 overflow-hidden bg-primary text-white">
+    <footer className="relative overflow-hidden bg-primary text-white">
       <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.97),rgba(15,23,42,0.94))]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_26%)]" />
       <div className="absolute -left-12 top-12 h-44 w-44 rounded-full border border-secondary/20 sm:h-56 sm:w-56" />
@@ -59,12 +59,18 @@ export const Footer = () => {
             <div className="mt-8 space-y-3 text-sm leading-7 text-white/72 sm:text-base">
               <p>16, Nkwere Street, Garki Area 11 FCT, Abuja Nigeria.</p>
               <p>
-                <a href="tel:+2348037864683" className="transition-colors hover:text-white">
+                <a
+                  href="tel:+2348037864683"
+                  className="transition-colors hover:text-white"
+                >
                   +234 803 786 4683
                 </a>
               </p>
               <p>
-                <a href="mailto:onyekazita@gmail.com" className="transition-colors hover:text-white">
+                <a
+                  href="mailto:onyekazita@gmail.com"
+                  className="transition-colors hover:text-white"
+                >
                   onyekazita@gmail.com
                 </a>
               </p>
