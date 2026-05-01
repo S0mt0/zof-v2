@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Play, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Play, X } from "lucide-react";
+import Masonry from "react-masonry-css";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -70,7 +71,7 @@ const photos: PhotoItem[] = [
   },
   {
     type: "photo",
-    src: "/assets/img/IMG_3579 2.jpg",
+    src: "/assets/img/zinny.jpeg",
     alt: "Community-focused support moment from the foundation",
   },
   {
@@ -94,21 +95,40 @@ const videos: VideoItem[] = [
   },
 ];
 
-const allMedia: MediaItem[] = [
-  photos[0],
-  photos[1],
-  videos[0],
-  photos[2],
-  photos[3],
-  photos[4],
-  photos[5],
-  photos[6],
-  photos[7],
-  photos[8],
-  photos[9],
-  photos[10],
-  photos[11],
-];
+const mixMedia = (photoItems: PhotoItem[], videoItems: VideoItem[]) => {
+  if (!videoItems.length) return photoItems;
+
+  const result: MediaItem[] = [];
+  const spacing = Math.max(2, Math.ceil(photoItems.length / videoItems.length));
+  let photoIndex = 0;
+  let videoIndex = 0;
+
+  while (photoIndex < photoItems.length || videoIndex < videoItems.length) {
+    let count = 0;
+
+    while (photoIndex < photoItems.length && count < spacing) {
+      result.push(photoItems[photoIndex]);
+      photoIndex += 1;
+      count += 1;
+    }
+
+    if (videoIndex < videoItems.length) {
+      result.push(videoItems[videoIndex]);
+      videoIndex += 1;
+    }
+  }
+
+  return result;
+};
+
+const allMedia: MediaItem[] = mixMedia(photos, videos);
+
+const masonryBreakpoints = {
+  default: 3,
+  1280: 3,
+  1024: 2,
+  640: 1,
+};
 
 const MasonryGrid = ({
   items,
@@ -117,7 +137,11 @@ const MasonryGrid = ({
   items: MediaItem[];
   onOpen: (item: MediaItem) => void;
 }) => (
-  <div className="columns-1 gap-4 sm:columns-2 xl:columns-3">
+  <Masonry
+    breakpointCols={masonryBreakpoints}
+    className="gallery-masonry flex gap-4 sm:gap-5 lg:gap-6"
+    columnClassName="gallery-masonry-column"
+  >
     {items.map((item, index) => (
       <button
         key={`${item.type}-${
@@ -125,7 +149,7 @@ const MasonryGrid = ({
         }-${index}`}
         type="button"
         onClick={() => onOpen(item)}
-        className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-[1.5rem] bg-white text-left"
+        className="group relative mb-4 block w-full overflow-hidden rounded-[1.5rem] bg-white text-left sm:mb-5 lg:mb-6"
       >
         {item.type === "photo" ? (
           <Image
@@ -154,17 +178,51 @@ const MasonryGrid = ({
         )}
       </button>
     ))}
-  </div>
+  </Masonry>
 );
 
 export function GalleryShowcase() {
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
+  const [activeCollection, setActiveCollection] = useState<MediaItem[]>([]);
+
+  const openItem = (item: MediaItem, collection: MediaItem[]) => {
+    setActiveCollection(collection);
+    setActiveItem(item);
+  };
+
+  const activeIndex = activeItem
+    ? activeCollection.findIndex((item) =>
+        item.type === "photo" && activeItem.type === "photo"
+          ? item.src === activeItem.src
+          : item.type === "video" &&
+            activeItem.type === "video" &&
+            item.src === activeItem.src
+      )
+    : -1;
+
+  const canNavigate = activeCollection.length > 1 && activeIndex >= 0;
+
+  const showPrevious = useCallback(() => {
+    if (!canNavigate) return;
+    const previousIndex =
+      activeIndex === 0 ? activeCollection.length - 1 : activeIndex - 1;
+    setActiveItem(activeCollection[previousIndex]);
+  }, [activeCollection, activeIndex, canNavigate]);
+
+  const showNext = useCallback(() => {
+    if (!canNavigate) return;
+    const nextIndex =
+      activeIndex === activeCollection.length - 1 ? 0 : activeIndex + 1;
+    setActiveItem(activeCollection[nextIndex]);
+  }, [activeCollection, activeIndex, canNavigate]);
 
   useEffect(() => {
     if (!activeItem) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setActiveItem(null);
+      if (event.key === "ArrowLeft") showPrevious();
+      if (event.key === "ArrowRight") showNext();
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -174,7 +232,7 @@ export function GalleryShowcase() {
       window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-  }, [activeItem]);
+  }, [activeItem, showNext, showPrevious]);
 
   return (
     <main className="bg-[#fbf8f2]">
@@ -234,15 +292,24 @@ export function GalleryShowcase() {
             </div>
 
             <TabsContent value="photos" className="mt-0">
-              <MasonryGrid items={photos} onOpen={setActiveItem} />
+              <MasonryGrid
+                items={photos}
+                onOpen={(item) => openItem(item, photos)}
+              />
             </TabsContent>
 
             <TabsContent value="videos" className="mt-0">
-              <MasonryGrid items={videos} onOpen={setActiveItem} />
+              <MasonryGrid
+                items={videos}
+                onOpen={(item) => openItem(item, videos)}
+              />
             </TabsContent>
 
             <TabsContent value="all" className="mt-0">
-              <MasonryGrid items={allMedia} onOpen={setActiveItem} />
+              <MasonryGrid
+                items={allMedia}
+                onOpen={(item) => openItem(item, allMedia)}
+              />
             </TabsContent>
           </Tabs>
         </div>
@@ -255,6 +322,34 @@ export function GalleryShowcase() {
           aria-modal="true"
           onClick={() => setActiveItem(null)}
         >
+          {canNavigate ? (
+            <>
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showPrevious();
+                }}
+                aria-label="Previous gallery item"
+                className="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/18 sm:left-6"
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showNext();
+                }}
+                aria-label="Next gallery item"
+                className="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/18 sm:right-6"
+              >
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </>
+          ) : null}
+
           <button
             type="button"
             onClick={() => setActiveItem(null)}
@@ -292,8 +387,20 @@ export function GalleryShowcase() {
               </div>
             )}
           </div>
+
+          {canNavigate ? (
+            <div className="pointer-events-none absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full bg-white/10 px-4 py-2 text-xs font-medium tracking-[0.18em] text-white/80 uppercase sm:bottom-6">
+              {activeIndex + 1} / {activeCollection.length}
+            </div>
+          ) : null}
         </div>
       ) : null}
+
+      <style jsx global>{`
+        .gallery-masonry-column {
+          background-clip: padding-box;
+        }
+      `}</style>
     </main>
   );
 }
