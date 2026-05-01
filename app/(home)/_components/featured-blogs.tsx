@@ -14,7 +14,7 @@ export const FeaturedBlogs = async ({ blogsDataPromise }: Props) => {
   if (!blogs || !blogs.length) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#fdf8f1] px-4 py-20 lg:py-24">
+    <section className="relative overflow-hidden px-4 py-20 lg:py-24">
       <div className="pointer-events-none absolute -left-16 top-6 h-56 w-56 rounded-full border border-secondary/35" />
       <div className="pointer-events-none absolute -right-10 bottom-12 h-72 w-72 rounded-full border border-white/65" />
       <div className="pointer-events-none absolute right-6 bottom-24 h-56 w-56 rounded-full border border-white/65" />
@@ -43,7 +43,7 @@ export const FeaturedBlogs = async ({ blogsDataPromise }: Props) => {
           {blogs.map((blog) => (
             <article
               key={blog.slug}
-              className="group overflow-hidden rounded-[1.7rem] bg-white shadow-[0_18px_40px_rgba(76,57,31,0.08)] transition-transform duration-300 hover:-translate-y-1 min-w-[230px] w-fit"
+              className="group overflow-hidden rounded-[1.7rem] bg-white shadow-[0_18px_40px_rgba(76,57,31,0.08)] transition-transform duration-300 hover:-translate-y-1 min-w-70 w-fit"
             >
               <Link
                 href={`/blogs/${blog.slug}`}

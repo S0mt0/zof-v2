@@ -101,15 +101,15 @@ export const OurValues = () => {
                 >
                   <div className="absolute left-0 top-8 hidden h-10 w-10 -translate-x-1/2 rounded-full border-8 border-[#F8F3EC] bg-primary xl:block" />
 
-                  <div className="flex items-start gap-5">
-                    <div className="min-w-14 text-4xl font-bold leading-none text-primary/20">
+                  <div className="flex items-start gap-4 xs:gap-5">
+                    <div className="min-w-12 xs:min-w-14 text-3xl xs:text-4xl font-bold leading-none text-primary/20">
                       {number}
                     </div>
                     <div>
                       <h3 className="text-2xl font-semibold text-slate-900">
                         {title}
                       </h3>
-                      <p className="mt-3 max-w-xl text-base leading-8 text-slate-600">
+                      <p className="mt-3 max-w-xl text-base xs:leading-8 text-slate-600">
                         {description}
                       </p>
                     </div>

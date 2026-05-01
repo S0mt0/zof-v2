@@ -28,7 +28,7 @@ export const WhoWeAre = () => {
       <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-secondary/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -45,7 +45,7 @@ export const WhoWeAre = () => {
             </div>
 
             <div className="relative min-h-[520px]">
-              <div className="relative h-[420px] w-[80%] md:w-[72%] overflow-hidden rounded-[2rem] border-4 border-white shadow-[0_28px_70px_rgba(15,23,42,0.18)] sm:h-[500px]">
+              <div className="relative h-[420px] w-[90%] sm:w-[80%] md:w-[72%] overflow-hidden rounded-[2rem] border-4 border-white shadow-[0_28px_70px_rgba(15,23,42,0.18)] sm:h-[500px]">
                 <Image
                   src="/assets/img/zof_child.jpg"
                   alt="Children gathered at a community support center"

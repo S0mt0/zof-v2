@@ -45,7 +45,7 @@ export const ContactForm = () => {
             form.reset();
           }
         })
-        .catch((e) => {
+        .catch(() => {
           toast.error("Something went wrong, try again.");
         });
     });
@@ -53,62 +53,65 @@ export const ContactForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="sender"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-semibold">
-                Name <span className="text-orange-300">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input
-                  disabled={isPending}
-                  className="placeholder:text-muted-foreground/40 shadow-none border-2"
-                  placeholder="Jane Doe"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <div className="grid gap-6 sm:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="sender"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-sm font-semibold text-slate-800">
+                  Name <span className="text-[#f36a3d]">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={isPending}
+                    className="h-13 rounded-full border-[#e6dcc9] bg-white px-5 text-slate-700 placeholder:text-slate-400 focus-visible:ring-0"
+                    placeholder="Jane Doe"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-semibold">
-                Email <span className="text-orange-300">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input
-                  disabled={isPending}
-                  className="placeholder:text-muted-foreground/40 shadow-none border-2"
-                  placeholder="email@jane.doe"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-sm font-semibold text-slate-800">
+                  Email <span className="text-[#f36a3d]">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={isPending}
+                    className="h-13 rounded-full border-[#e6dcc9] bg-white px-5 text-slate-700 placeholder:text-slate-400 focus-visible:ring-0"
+                    placeholder="email@jane.doe"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <FormField
           control={form.control}
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-semibold">
-                Subject <span className="text-orange-300">*</span>
+              <FormLabel className="text-sm font-semibold text-slate-800">
+                Subject <span className="text-[#f36a3d]">*</span>
               </FormLabel>
               <FormControl>
                 <Input
                   disabled={isPending}
+                  placeholder="How can we help?"
                   {...field}
-                  className="shadow-none border-2"
+                  className="h-13 rounded-full border-[#e6dcc9] bg-white px-5 text-slate-700 placeholder:text-slate-400 focus-visible:ring-0"
                 />
               </FormControl>
               <FormMessage />
@@ -121,14 +124,14 @@ export const ContactForm = () => {
           name="content"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-semibold">
-                Message <span className="text-orange-300">*</span>
+              <FormLabel className="text-sm font-semibold text-slate-800">
+                Message <span className="text-[#f36a3d]">*</span>
               </FormLabel>
               <FormControl>
                 <Textarea
-                  className="placeholder:text-muted-foreground/40 shadow-none border-2"
+                  className="min-h-40 rounded-[1.5rem] border-[#e6dcc9] bg-white px-5 py-4 text-slate-700 placeholder:text-slate-400 focus-visible:ring-0"
                   placeholder="Write your message here..."
-                  rows={6}
+                  rows={7}
                   {...field}
                 />
               </FormControl>
@@ -139,11 +142,11 @@ export const ContactForm = () => {
 
         <Button
           type="submit"
-          className="font-semibold hover:scale-110 transition-all rounded-none"
+          className="h-12 rounded-full bg-primary px-8 text-sm font-semibold text-white hover:bg-primary/90"
           size="lg"
           disabled={isPending}
         >
-          {isPending ? "Sending..." : "Submit"}
+          {isPending ? "Sending..." : "Send Message"}
         </Button>
       </form>
     </Form>

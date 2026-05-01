@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const faqItems = [
   {
@@ -75,26 +76,24 @@ export const Faqs = () => {
                 <button
                   type="button"
                   onClick={() => setOpenItem(isOpen ? -1 : index)}
-                  className={[
+                  className={cn(
                     "flex w-full items-center text-left transition-colors rounded-4xl cursor-pointer",
-                    isOpen
-                      ? "bg-primary text-white"
-                      : "bg-white text-slate-900",
-                  ].join(" ")}
+                    isOpen ? "bg-primary text-white" : "bg-white text-slate-900"
+                  )}
                 >
                   <span
-                    className={[
-                      "flex h-full min-h-10 w-16 shrink-0 items-center justify-center border-r text-xl font-semibold md:w-20",
+                    className={cn(
+                      "flex h-full min-h-10 w-14 shrink-0 items-center justify-center border-r text-xl font-semibold md:w-20",
                       isOpen
                         ? "border-white/12 text-secondary"
-                        : "border-[#efe7da] text-slate-600",
-                    ].join(" ")}
+                        : "border-[#efe7da] text-slate-600"
+                    )}
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
                   <span className="flex flex-1 items-center justify-between gap-6 px-6 py-3 md:px-8">
-                    <span className=" font-semibold leading-snug md:text-lg">
+                    <span className=" font-semibold leading-snug text-base xs:text-lg">
                       {question}
                     </span>
 

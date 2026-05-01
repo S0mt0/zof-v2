@@ -43,10 +43,10 @@ export const Footer = () => {
       <div className="relative mx-auto max-w-7xl px-4 pb-8 pt-12 sm:px-6 lg:px-8 lg:pb-10 lg:pt-16">
         <div className="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-12 lg:pb-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-medium text-secondary">
+            {/* <div className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-medium text-secondary">
               <span className="h-2 w-2 rounded-full bg-[#f36a3d]" />
               Let&apos;s keep hope in motion
-            </div>
+            </div> */}
 
             <p className="mt-6 text-xl font-extrabold tracking-tight sm:text-2xl">
               Zita-Onyeka Foundation
@@ -94,7 +94,7 @@ export const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="min-w-0 flex-1 rounded-full border border-white/14 bg-white/8 px-5 py-4 text-sm text-white placeholder:text-white/45 focus:border-secondary focus:outline-none sm:text-base"
+                className="min-w-0 flex-1 rounded-full border border-white/14 text-slate-900 bg-white px-5 py-4 text-sm placeholder:text-muted-foreground focus:border-secondary focus:outline-none sm:text-base"
               />
               <button
                 type="submit"
