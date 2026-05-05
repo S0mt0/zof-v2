@@ -92,7 +92,7 @@ export const Faqs = () => {
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <span className="flex flex-1 items-center justify-between gap-6 px-6 py-3 md:px-8">
+                  <span className="flex flex-1 items-center justify-between gap-2 xs:gap-6 xs:px-6 px-4 py-3 md:px-8">
                     <span className=" font-semibold leading-snug text-base xs:text-lg">
                       {question}
                     </span>

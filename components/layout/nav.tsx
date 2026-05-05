@@ -3,11 +3,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useToggle } from "usehooks-ts";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LuHeartHandshake } from "react-icons/lu";
 
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -37,25 +38,31 @@ const DonateButton = ({ className }: { className?: string }) => (
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const [toggled, toggle] = useToggle();
+  const sheetCloseRef = useRef<HTMLButtonElement>(null);
 
-  const [showStickyNav, setShowStickyNav] = useState(false);
+  const closeSheet = () => {
+    sheetCloseRef.current?.click();
+  };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const vh = window.innerHeight;
+  // const [toggled, toggle] = useToggle();
 
-      if (scrollY > vh * 0.7) {
-        setShowStickyNav(true);
-      } else {
-        setShowStickyNav(false);
-      }
-    };
+  // const [showStickyNav, setShowStickyNav] = useState(false);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollY = window.scrollY;
+  //     const vh = window.innerHeight;
+
+  //     if (scrollY > vh * 0.7) {
+  //       setShowStickyNav(true);
+  //     } else {
+  //       setShowStickyNav(false);
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <div className="">
@@ -100,7 +107,12 @@ export const Navbar = () => {
       {/* Main nav */}
       <div className="h-18 flex items-center md:h-7 bg-slate-50 relative">
         <div className="lg:w-[98%] w-[90%] gap-1 md:gap-0 flex items-center justify-between z-3 h-fit absolute top-1/2 md:top-0 md:translate-y-0 -translate-y-1/2 inset-0 mx-auto">
-          <div className="bg-primary gap-1 text-slate-50 rounded-full flex items-center justify-between px-1.5 md:px-8 h-16 md:h-14 flex-1">
+          <div className="bg-linear-to-r from-[#077e51] to-[#134d49] gap-1 text-slate-50 rounded-full flex items-center justify-between px-1.5 md:px-8 h-16 md:h-14 flex-1">
+            {/* <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.95),rgba(15,23,42,0.92))]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%)]" />
+            <div className="absolute -left-10 top-18 h-56 w-56 rounded-full border border-secondary/25" />
+            <div className="absolute right-8 top-8 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
+            <div className="absolute -right-14 bottom-8 h-72 w-72 rounded-full bg-secondary/12 blur-3xl" /> */}
             <Logo className="w-14 h-auto shrink-0 md:hidden" />
             <DonateButton className="md:hidden px-6 h-14" />
             {/* Left nav links */}
@@ -145,10 +157,12 @@ export const Navbar = () => {
               </SheetHeader>
 
               <ul className="flex flex-col items-start p-8 gap-8 md:hidden">
+                <SheetClose className="hidden" ref={sheetCloseRef} />
                 {navLinks.map(({ href, label }) => (
                   <li
                     key={href}
                     className="border-b pb-1 border-accent/10 w-full"
+                    onClick={closeSheet}
                   >
                     <Link
                       href={href}

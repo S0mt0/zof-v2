@@ -33,7 +33,7 @@ export const Hero = () => {
       <Image
         src="/assets/img/hero-brush.png"
         alt="brush stroke"
-        className="absolute bottom-0 left-0 z-10 h-auto w-64 lg:w-72"
+        className="xs:block hidden absolute bottom-0 left-0 z-10 h-auto w-64 lg:w-72"
         width={400}
         height={200}
       />

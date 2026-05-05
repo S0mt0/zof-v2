@@ -77,11 +77,17 @@ export default function AboutPage() {
   return (
     <main className="bg-white">
       <section className="relative overflow-hidden px-4 pb-20 pt-32 lg:pb-24 lg:pt-40">
-        <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.95),rgba(15,23,42,0.92))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.97),rgba(15,23,42,0.94))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_26%)]" />
+        <div className="absolute -left-12 top-12 h-44 w-44 rounded-full border border-secondary/20 sm:h-56 sm:w-56" />
+        <div className="absolute right-0 top-0 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
+        <div className="absolute -right-12 bottom-10 h-60 w-60 rounded-full bg-secondary/12 blur-3xl" />
+
+        {/* <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.95),rgba(15,23,42,0.92))]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%)]" />
         <div className="absolute -left-10 top-18 h-56 w-56 rounded-full border border-secondary/25" />
         <div className="absolute -right-12 bottom-8 h-72 w-72 rounded-full bg-secondary/12 blur-3xl" />
-        <div className="absolute right-10 top-8 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
+        <div className="absolute right-10 top-8 hidden h-72 w-72 rounded-full border border-white/10 lg:block" /> */}
         <div className="absolute left-[18%] top-0 hidden h-64 w-64 lg:block">
           <svg
             viewBox="0 0 260 220"
@@ -236,8 +242,8 @@ export default function AboutPage() {
                     Our Vision
                   </p>
                   <p className="mt-2 text-base leading-8 text-slate-600">
-                    A society where women, youth, and families have the tools
-                    to thrive with dignity.
+                    A society where women, youth, and families have the tools to
+                    thrive with dignity.
                   </p>
                 </div>
               </div>

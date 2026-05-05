@@ -1,16 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   CheckCircle2,
-  CreditCard,
-  HandHeart,
   HeartHandshake,
-  ShieldCheck,
-  Wallet,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -66,34 +62,6 @@ const campaigns = [
 
 const suggestedAmounts = [5000, 10000, 25000, 50000];
 
-const trustPoints = [
-  {
-    title: "General or campaign giving",
-    description:
-      "Donors can support the overall mission or direct their gift to a selected campaign.",
-    icon: HandHeart,
-  },
-  {
-    title: "Clear anonymity option",
-    description:
-      "Anonymous means hidden from public recognition, while payment records may still be required privately for processing.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Ready for secure checkout",
-    description:
-      "This page is structured for Paystack-based donation checkout and webhook confirmation.",
-    icon: CreditCard,
-  },
-] as const;
-
-const impactNotes = [
-  "Education access for children and youth",
-  "Women-focused empowerment initiatives",
-  "Community relief and emergency support",
-  "Volunteer-led outreach across underserved areas",
-];
-
 function formatNaira(amount: number) {
   return new Intl.NumberFormat("en-NG", {
     style: "currency",
@@ -111,156 +79,27 @@ export const DonateExperience = () => {
   const [amount, setAmount] = useState("10000");
   const [isAnonymous, setIsAnonymous] = useState(false);
 
-  const selectedCampaign = campaigns.find((item) => item.id === campaign);
-
-  const parsedAmount = useMemo(() => {
-    const raw = Number(amount.replace(/[^\d]/g, ""));
-    return Number.isFinite(raw) ? raw : 0;
-  }, [amount]);
-
   return (
     <main className="bg-white">
-      <section className="relative overflow-hidden px-4 pb-20 pt-32 lg:pb-24 lg:pt-40">
-        <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.95),rgba(15,23,42,0.92))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%)]" />
-        <div className="absolute -left-12 top-16 h-56 w-56 rounded-full border border-secondary/25" />
-        <div className="absolute -right-12 bottom-8 h-72 w-72 rounded-full bg-secondary/12 blur-3xl" />
-        <div className="absolute right-10 top-8 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
-        <div className="absolute left-[16%] top-0 hidden h-64 w-64 lg:block">
-          <svg
-            viewBox="0 0 260 220"
-            className="h-full w-full text-secondary/25"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M15 10c38 27 62 66 78 116M45 10c25 38 55 70 121 104M88 12c32 28 69 44 149 63M52 44c60 0 122 24 178 71M90 82c43 23 72 58 99 114"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
-        <div className="relative mx-auto max-w-7xl">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.25 }}
-              className="max-w-2xl text-white"
-            >
-              <p className="inline-flex items-center gap-2 text-sm font-medium text-secondary">
-                <span className="h-2 w-2 rounded-full bg-[#f36a3d]" />
-                Donate
-              </p>
-              <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-                Give with clarity, dignity, and a clear sense of purpose.
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-8 text-white/80 sm:text-lg">
-                Support the Zita-Onyeka Foundation through one-time or monthly
-                giving. Donors can give generally, support a specific campaign,
-                and choose whether their gift should be publicly anonymous.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                {impactNotes.map((note) => (
-                  <span
-                    key={note}
-                    className="rounded-full border border-white/12 px-4 py-2 text-sm text-white/80"
-                  >
-                    {note}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease: "easeOut", delay: 0.08 }}
-              viewport={{ once: true, amount: 0.25 }}
-              className="rounded-[2rem] border border-white/12 bg-white/8 p-5 shadow-[0_24px_70px_rgba(15,23,42,0.18)] backdrop-blur sm:p-6"
-            >
-              <div className="rounded-[1.6rem] border border-white/10 bg-white p-6 text-slate-900 shadow-[0_18px_60px_rgba(15,23,42,0.12)] sm:p-8">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#f36a3d]">
-                      Donation Summary
-                    </p>
-                    <h2 className="mt-3 text-3xl font-bold text-slate-950">
-                      {parsedAmount > 0
-                        ? formatNaira(parsedAmount)
-                        : "Enter an amount"}
-                    </h2>
-                  </div>
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#fff3ea] text-[#f36a3d]">
-                    <Wallet className="h-6 w-6" />
-                  </div>
-                </div>
-
-                <div className="mt-6 space-y-4 rounded-[1.4rem] bg-[#f8f5ee] p-5">
-                  <div className="flex items-start justify-between gap-4 text-sm">
-                    <span className="text-slate-500">Donation type</span>
-                    <span className="font-semibold text-slate-900">
-                      {frequency === "monthly"
-                        ? "Monthly support"
-                        : "One-time gift"}
-                    </span>
-                  </div>
-                  <div className="flex items-start justify-between gap-4 text-sm">
-                    <span className="text-slate-500">Giving preference</span>
-                    <span className="max-w-52 text-right font-semibold text-slate-900">
-                      {fund === "campaign"
-                        ? selectedCampaign?.name
-                        : "Where needed most"}
-                    </span>
-                  </div>
-                  <div className="flex items-start justify-between gap-4 text-sm">
-                    <span className="text-slate-500">Public recognition</span>
-                    <span className="font-semibold text-slate-900">
-                      {isAnonymous ? "Anonymous" : "Named donation"}
-                    </span>
-                  </div>
-                </div>
-
-                <p className="mt-5 text-sm leading-7 text-slate-600">
-                  This page defines the donor choices clearly and is ready for
-                  secure payment activation. The next implementation step is to
-                  connect the final submit action to Paystack checkout.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {trustPoints.map(({ title, description, icon: Icon }) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="rounded-[1.8rem] border border-[#eadfcb] bg-[#fdf8f1] p-6"
-              >
-                <div className="flex h-13 w-13 items-center justify-center rounded-full bg-white text-[#f36a3d] shadow-sm">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h2 className="mt-5 text-xl font-semibold text-slate-950">
-                  {title}
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  {description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <section className="border-b border-[#efe7da] px-4 pb-12 pt-32 lg:pt-40">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f36a3d]">
+            Donate
+          </p>
+          <h1 className="mt-4 text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            Support the work.
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
+            Give once or monthly, direct your donation to a campaign or general
+            support, and choose whether your gift is shown publicly by name.
+          </p>
+        </motion.div>
       </section>
 
       <section className="relative overflow-hidden bg-[#f8f5ee] px-4 py-20 lg:py-24">
@@ -497,7 +336,9 @@ export const DonateExperience = () => {
                       : "border-[#d8ccb7] bg-white"
                   )}
                 >
-                  {isAnonymous ? <CheckCircle2 className="h-3.5 w-3.5" /> : null}
+                  {isAnonymous ? (
+                    <CheckCircle2 className="h-3.5 w-3.5" />
+                  ) : null}
                 </span>
                 <span>
                   <span className="block text-sm font-semibold text-slate-900">

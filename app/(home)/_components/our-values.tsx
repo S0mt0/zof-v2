@@ -97,11 +97,11 @@ export const OurValues = () => {
                     delay: index * 0.08,
                   }}
                   viewport={{ once: true, amount: 0.2 }}
-                  className="relative rounded-[2rem] border border-white/70 bg-white/85 p-7 shadow-[0_20px_50px_rgba(15,23,42,0.05)]"
+                  className="relative rounded-[2rem] border border-white/70 bg-white/85 p-5 xs:p-7 shadow-[0_20px_50px_rgba(15,23,42,0.05)]"
                 >
                   <div className="absolute left-0 top-8 hidden h-10 w-10 -translate-x-1/2 rounded-full border-8 border-[#F8F3EC] bg-primary xl:block" />
 
-                  <div className="flex items-start gap-4 xs:gap-5">
+                  <div className="flex items-start gap-3 xs:gap-5">
                     <div className="min-w-12 xs:min-w-14 text-3xl xs:text-4xl font-bold leading-none text-primary/20">
                       {number}
                     </div>

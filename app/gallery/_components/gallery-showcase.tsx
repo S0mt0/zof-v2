@@ -264,19 +264,19 @@ export function GalleryShowcase() {
               >
                 <TabsTrigger
                   value="photos"
-                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
+                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] active:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
                 >
                   Photos
                 </TabsTrigger>
                 <TabsTrigger
                   value="videos"
-                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
+                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] active:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
                 >
                   Videos
                 </TabsTrigger>
                 <TabsTrigger
                   value="all"
-                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
+                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] active:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
                 >
                   Mixed
                 </TabsTrigger>
