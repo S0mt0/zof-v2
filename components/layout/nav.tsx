@@ -1,4 +1,6 @@
 "use client";
+import { MdMenu } from "react-icons/md";
+import { SlMenu } from "react-icons/sl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
@@ -19,7 +21,7 @@ import { navContact, navLinks, navSocialLinks } from "./nav-data";
 import { cn } from "@/lib/utils";
 import { Logo } from "../common/logo";
 import { Button } from "../ui/button";
-import { FaHeart } from "react-icons/fa";
+import { FaHamburger, FaHeart } from "react-icons/fa";
 
 const DonateButton = ({ className }: { className?: string }) => (
   <Button
@@ -105,16 +107,79 @@ export const Navbar = () => {
       </div>
 
       {/* Main nav */}
-      <div className="h-18 flex items-center md:h-7 bg-slate-50 relative">
-        <div className="lg:w-[98%] w-[90%] gap-1 md:gap-0 flex items-center justify-between z-3 h-fit absolute top-1/2 md:top-0 md:translate-y-0 -translate-y-1/2 inset-0 mx-auto">
-          <div className="bg-linear-to-r from-[#077e51] to-[#134d49] gap-1 text-slate-50 rounded-full flex items-center justify-between px-1.5 md:px-8 h-16 md:h-14 flex-1">
+      <div className="h-16 flex items-center md:h-7 md:bg-slate-50 md:bg-none bg-linear-to-r from-[#077e51] to-[#134d49]  relative">
+        <div className="lg:w-[98%] w-[98%] xs:w-[90%] gap-1 md:gap-0 flex items-center justify-between z-3 h-fit absolute top-1/2 md:top-0 md:translate-y-0 -translate-y-1/2 inset-0 mx-auto">
+          <div className="md:bg-linear-to-r from-[#077e51] to-[#134d49] gap-1 text-slate-50 rounded-full flex items-center justify-between px-1.5 md:px-8 h-16 md:h-14 flex-1">
             {/* <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.95),rgba(15,23,42,0.92))]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%)]" />
             <div className="absolute -left-10 top-18 h-56 w-56 rounded-full border border-secondary/25" />
             <div className="absolute right-8 top-8 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
             <div className="absolute -right-14 bottom-8 h-72 w-72 rounded-full bg-secondary/12 blur-3xl" /> */}
+            {/* <div className="flex items-center gap-3"> */}
             <Logo className="w-14 h-auto shrink-0 md:hidden" />
-            <DonateButton className="md:hidden px-6 h-14" />
+
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button className="h-fit w-fit shadow-none border-none cursor-pointer text-white rounded-full bg-transparent flex items-center justify-center md:hidden">
+                  <SlMenu className="h-16 w-16 shrink-0" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="bg-slate-50 border-l border-primary overflow-y-auto">
+                <SheetHeader className="bg-slate-100">
+                  <Logo className="w-18 h-auto shrink-0 md:hidden" />
+                </SheetHeader>
+                <ul className="flex flex-col items-start p-8 gap-8 md:hidden">
+                  <SheetClose className="hidden" ref={sheetCloseRef} />
+                  {navLinks.map(({ href, label }) => (
+                    <li
+                      key={href}
+                      className="border-b pb-1 border-accent/10 w-full"
+                      onClick={closeSheet}
+                    >
+                      <Link
+                        href={href}
+                        className={cn(
+                          "hover:text-yellow-400 transition-colors font-semibold",
+                          pathname === href && "text-amber-500"
+                        )}
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                  <li
+                    className="border-b pb-1 border-accent/10 w-full"
+                    onClick={closeSheet}
+                  >
+                    <Link
+                      href="/donate"
+                      className={cn(
+                        "hover:text-yellow-400 transition-colors font-semibold",
+                        pathname === "/donate" && "text-amber-500"
+                      )}
+                    >
+                      Donate
+                    </Link>
+                  </li>
+                </ul>
+                <SheetFooter>
+                  <ul className="md:hidden flex justify-center items-center gap-1.5">
+                    {navSocialLinks.map(({ href, icon: Icon }, idx) => (
+                      <li key={idx}>
+                        <Link
+                          href={href}
+                          className="h-11 w-11 rounded-full border flex items-center justify-center text-slate-700 hover:bg-green-800 duration-300 hover:text-slate-50 transition-all"
+                        >
+                          <Icon />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet>
+            {/* </div> */}
+            {/* <DonateButton className="md:hidden px-6 h-14" /> */}
             {/* Left nav links */}
             <ul className="md:flex items-center gap-8 hidden">
               {navLinks.map(({ href, label }) => (
@@ -122,7 +187,7 @@ export const Navbar = () => {
                   <Link
                     href={href}
                     className={cn(
-                      "hover:text-yellow-400 transition-colors font-semibold",
+                      "hover:text-yellow-400 transition-colors font-semibold text-sm lg:text-base",
                       pathname === href && "text-yellow-400"
                     )}
                   >
@@ -141,58 +206,6 @@ export const Navbar = () => {
           </div>
 
           <DonateButton className="hidden md:flex" />
-
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                className="h-16 w-16 cursor-pointer text-white rounded-full bg-primary flex items-center justify-center md:hidden"
-              >
-                <Menu className="h-8 w-8" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent className="bg-slate-50 border-l border-primary">
-              <SheetHeader className="bg-slate-100">
-                <Logo className="w-18 h-auto shrink-0 md:hidden" />
-              </SheetHeader>
-
-              <ul className="flex flex-col items-start p-8 gap-8 md:hidden">
-                <SheetClose className="hidden" ref={sheetCloseRef} />
-                {navLinks.map(({ href, label }) => (
-                  <li
-                    key={href}
-                    className="border-b pb-1 border-accent/10 w-full"
-                    onClick={closeSheet}
-                  >
-                    <Link
-                      href={href}
-                      className={cn(
-                        "hover:text-yellow-400 transition-colors font-semibold",
-                        pathname === href && "text-amber-500"
-                      )}
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-
-              <SheetFooter>
-                <ul className="md:hidden flex justify-center items-center gap-1.5">
-                  {navSocialLinks.map(({ href, icon: Icon }, idx) => (
-                    <li key={idx}>
-                      <Link
-                        href={href}
-                        className="h-11 w-11 rounded-full border flex items-center justify-center text-slate-700 hover:bg-green-800 duration-300 hover:text-slate-50 transition-all"
-                      >
-                        <Icon />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </SheetFooter>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </div>
