@@ -6,8 +6,6 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Play, X } from "lucide-react";
 import Masonry from "react-masonry-css";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 type PhotoItem = {
   type: "photo";
   src: string;
@@ -256,62 +254,27 @@ export function GalleryShowcase() {
 
       <section className="px-4 pb-24">
         <div className="mx-auto max-w-7xl">
-          <Tabs defaultValue="photos" className="gap-8">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-              <TabsList
-                variant="line"
-                className="h-auto gap-2 rounded-full border border-[#e8ddc8] bg-white p-1"
-              >
-                <TabsTrigger
-                  value="photos"
-                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] active:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
-                >
-                  Photos
-                </TabsTrigger>
-                <TabsTrigger
-                  value="videos"
-                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] active:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
-                >
-                  Videos
-                </TabsTrigger>
-                <TabsTrigger
-                  value="all"
-                  className="rounded-full px-5 py-2.5 text-sm text-slate-600 data-[state=active]:bg-[#f36a3d] active:bg-[#f36a3d] data-[state=active]:text-accent data-[state=active]:after:hidden"
-                >
-                  Mixed
-                </TabsTrigger>
-              </TabsList>
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm leading-7 text-slate-600">
+              Photos and video moments from outreach, education support, women
+              empowerment, and community care.
+            </p>
 
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#f36a3d]"
-              >
-                Work with us
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#f36a3d]"
+            >
+              Work with us
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
 
-            <TabsContent value="photos" className="mt-0">
-              <MasonryGrid
-                items={photos}
-                onOpen={(item) => openItem(item, photos)}
-              />
-            </TabsContent>
-
-            <TabsContent value="videos" className="mt-0">
-              <MasonryGrid
-                items={videos}
-                onOpen={(item) => openItem(item, videos)}
-              />
-            </TabsContent>
-
-            <TabsContent value="all" className="mt-0">
-              <MasonryGrid
-                items={allMedia}
-                onOpen={(item) => openItem(item, allMedia)}
-              />
-            </TabsContent>
-          </Tabs>
+          <div className="mt-8">
+            <MasonryGrid
+              items={allMedia}
+              onOpen={(item) => openItem(item, allMedia)}
+            />
+          </div>
         </div>
       </section>
 

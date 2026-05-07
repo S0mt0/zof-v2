@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -50,108 +49,57 @@ const inquiryTypes = [
 export default function ContactPage() {
   return (
     <main className="bg-white">
-      <section className="relative overflow-hidden px-4 pb-20 pt-32 lg:pb-24 lg:pt-40">
-        <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.97),rgba(15,23,42,0.94))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_26%)]" />
-        <div className="absolute -left-12 top-12 h-44 w-44 rounded-full border border-secondary/20 sm:h-56 sm:w-56" />
-        <div className="absolute right-0 top-0 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
-        <div className="absolute -right-12 bottom-10 h-60 w-60 rounded-full bg-secondary/12 blur-3xl" />
+      <section className="border-b border-[#efe7da] px-4 pb-12 pt-32 lg:pt-40">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f36a3d]">
+            Contact Us
+          </p>
+          <h1 className="mt-4 text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            Let&apos;s talk.
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
+            Reach out for partnerships, volunteering, donations, or general
+            support. We&apos;d love to hear how you want to connect with the
+            mission.
+          </p>
 
-        {/* <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(25,95,74,0.95),rgba(15,23,42,0.92))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%)]" />
-        <div className="absolute -left-10 top-18 h-56 w-56 rounded-full border border-secondary/25" />
-        <div className="absolute right-8 top-8 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
-        <div className="absolute -right-14 bottom-8 h-72 w-72 rounded-full bg-secondary/12 blur-3xl" /> */}
-        <div className="absolute left-[16%] top-0 hidden h-64 w-64 lg:block">
-          <svg
-            viewBox="0 0 260 220"
-            className="h-full w-full text-secondary/25"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M15 10c38 27 62 66 78 116M45 10c25 38 55 70 121 104M88 12c32 28 69 44 149 63M52 44c60 0 122 24 178 71M90 82c43 23 72 58 99 114"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
-        <div className="relative mx-auto max-w-7xl">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
-            <div className="max-w-2xl text-white">
-              <p className="inline-flex items-center gap-2 text-sm font-medium text-secondary">
-                <span className="h-2 w-2 rounded-full bg-[#f36a3d]" />
-                Contact Us
-              </p>
-              <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-                Let&apos;s start a conversation that leads to meaningful impact.
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-8 text-white/80 sm:text-lg">
-                Reach out for partnerships, volunteering, donations, or general
-                support. We&apos;d love to hear how you want to connect with the
-                mission.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                {inquiryTypes.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/12 px-4 py-2 text-sm text-white/80"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-              <div className="absolute -left-6 top-10 hidden h-28 w-28 rounded-full border border-secondary/40 lg:block" />
-              <div className="relative min-h-[440px]">
-                <div className="relative ml-auto h-[400px] w-[84%] overflow-hidden rounded-[2rem] shadow-[0_30px_90px_rgba(15,23,42,0.18)]">
-                  <Image
-                    src="/assets/img/contact-tel.jpg"
-                    alt="Foundation representative speaking with community members"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 38vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="absolute bottom-0 left-0 w-[56%] rounded-[1.6rem] border border-[#eadfcb] bg-[#fff8ee] p-5 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
-                  <p className="text-sm font-medium text-[#f36a3d]">
-                    We&apos;re here for
-                  </p>
-                  <p className="mt-3 text-lg font-semibold leading-8 text-slate-900">
-                    support requests, partnerships, volunteer interest, and
-                    community-focused conversations.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-500">
+            {inquiryTypes.map((item, index) => (
+              <span key={item} className="inline-flex items-center gap-3">
+                {index > 0 ? (
+                  <span className="hidden h-1.5 w-1.5 rounded-full bg-[#d8ccb7] sm:block" />
+                ) : null}
+                <span>{item}</span>
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <section className="px-4 py-14 lg:py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="divide-y divide-[#efe7da] border-y border-[#efe7da]">
             {contactWays.map(({ title, value, href, icon: Icon }) => (
               <Link
                 key={title}
                 href={href}
-                className="rounded-[1.7rem] border border-[#eadfcb] bg-[#fdf8f1] p-6 transition-colors hover:bg-[#fbf2e5]"
+                className="grid gap-3 py-6 transition-colors hover:bg-[#fcfaf6] md:grid-cols-[180px_1fr_auto] md:items-center md:gap-6"
               >
-                <div className="flex h-13 w-13 items-center justify-center rounded-full bg-white text-[#f36a3d] shadow-sm">
-                  <Icon className="h-5 w-5" />
+                <div className="flex items-center gap-4">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#fff4ec] text-[#f36a3d]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f36a3d]">
+                    {title}
+                  </p>
                 </div>
-                <p className="mt-5 text-sm font-medium text-[#f36a3d]">
-                  {title}
-                </p>
-                <p className="mt-2 text-lg font-semibold leading-8 text-slate-900">
+                <p className="text-lg font-semibold leading-8 text-slate-900">
                   {value}
                 </p>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                  Open
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
               </Link>
             ))}
           </div>

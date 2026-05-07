@@ -3,11 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  CheckCircle2,
-  HeartHandshake,
-} from "lucide-react";
+import { ArrowUpRight, CheckCircle2, HeartHandshake } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -127,9 +123,9 @@ export const DonateExperience = () => {
 
             <div className="mt-8 space-y-5">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-sm">
+                {/* <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-sm">
                   <CheckCircle2 className="h-5 w-5" />
-                </div>
+                </div> */}
                 <div>
                   <p className="text-lg font-semibold text-slate-900">
                     Anonymous means private in public-facing displays
@@ -142,9 +138,9 @@ export const DonateExperience = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-sm">
+                {/* <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-sm">
                   <HeartHandshake className="h-5 w-5" />
-                </div>
+                </div> */}
                 <div>
                   <p className="text-lg font-semibold text-slate-900">
                     Campaign giving stays specific

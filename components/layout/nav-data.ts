@@ -16,6 +16,10 @@ export const navLinks = [
     label: "Blog",
   },
   {
+    href: "/event",
+    label: "Event",
+  },
+  {
     href: "/gallery",
     label: "Photo Gallery",
   },
