@@ -1,6 +1,5 @@
-"use client";
 import { format } from "date-fns";
-import { Clock, MapPin } from "lucide-react";
+import { ArrowUpRight, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,105 +12,93 @@ export const EventCard = ({
   date,
   excerpt,
   location,
-  showExcerpt = false,
+  showExcerpt = true,
   className,
   startTime,
   endTime,
   status,
-  showExpired = false,
 }: IEvent & {
   showExcerpt?: boolean;
   showExpired?: boolean;
   className?: string;
 }) => {
-  const today = new Date();
-  const eventDate = new Date(date || today);
-  const dayNumber = format(eventDate, "dd");
-  const monthName = format(eventDate, "MMM").toUpperCase();
+  const eventDate = new Date(date || new Date());
 
   return (
     <Link
       href={`/events/${slug}`}
       aria-label={`Read event: ${name}`}
-      className={cn(
-        "group block w-full border border-gray-200 rounded-sm overflow-hidden bg-white hover:shadow-lg transition-all duration-200",
-        className
-      )}
+      className={cn("group block h-full", className)}
     >
-      <div className="flex flex-col-reverse md:flex-row w-full">
-        <div className="flex-1">
-          <div className="flex-shrink-0 bg-stone-100 text-orange-500 p-6 flex flex-col items-center justify-center min-w-[120px]">
-            <div className="text-4xl font-bold leading-none">{dayNumber}</div>
-            <div className="text-sm font-medium mt-1">{monthName}</div>
-          </div>
-
-          {/* Main Content */}
-          <div className="flex-1 p-6 flex flex-col justify-between gap-6 h-full max-h-full">
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors">
-                {name}
-              </h3>
-
-              {/* Event Details */}
-              <div className="flex flex-wrap gap-4 my-3 text-xs text-gray-500/80 font-medium">
-                <div className="flex items-center gap-1">
-                  <Clock className="h-4 w-4 mr-2" />
-                  <span>
-                    {formatTime(startTime) || "Time not set"}
-                    {endTime && ` - ${formatTime(endTime)}`}
-                  </span>
-                </div>
-
-                {location && (
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" />
-                    <span>{location}</span>
-                  </div>
-                )}
+      <article className="flex h-full flex-col overflow-hidden rounded-[1.85rem] border border-[#e7dece] bg-white shadow-[0_18px_50px_rgba(76,57,31,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(76,57,31,0.12)]">
+        <div className="relative aspect-[1.18] overflow-hidden">
+          <Image
+            src={bannerImage || "/assets/img/events-banner.jpg"}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          />
+          <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-5">
+            <div className="rounded-[1.25rem] bg-white/94 px-4 py-3 text-center shadow-sm">
+              <div className="text-2xl font-bold leading-none text-slate-950">
+                {format(eventDate, "dd")}
               </div>
-
-              {excerpt && showExcerpt && (
-                <p className="text-gray-700 text-sm line-clamp-2 leading-relaxed">
-                  {excerpt}
-                </p>
-              )}
+              <div className="mt-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#f36a3d]">
+                {format(eventDate, "MMM")}
+              </div>
             </div>
 
-            <div className="mt-auto mb-4 flex-1">
-              <span
-                className={cn(
-                  "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border uppercase",
-                  getStatusColor(status)
-                )}
-              >
-                {status}
+            <span
+              className={cn(
+                "inline-flex rounded-full border px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] backdrop-blur-sm",
+                getStatusColor(status)
+              )}
+            >
+              {status}
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-1 flex-col px-6 py-6 sm:px-7">
+          <h3 className="text-2xl font-bold leading-snug text-slate-950 transition-colors group-hover:text-primary">
+            {name}
+          </h3>
+
+          <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+            <div className="flex items-start gap-3">
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#f36a3d]" />
+              <span>
+                {startTime ? formatTime(startTime) : "Time to be announced"}
+                {endTime ? ` - ${formatTime(endTime)}` : ""}
               </span>
             </div>
-          </div>
-        </div>
 
-        {/* Promotional Image/Banner Area */}
-        <div className="w-full h-full shrink-0 md:max-w-96 overflow-hidden relative">
-          <div
-            className={cn(
-              "hidden absolute inset-0 bg-black/50  items-center justify-center",
-              status === "completed" && showExpired && "flex"
-            )}
-          >
-            <p className="text-xl text-red-600 font-bold bg-white w-full py-6 px-3 text-center">
-              This event has expired
-            </p>
+            {location ? (
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#f36a3d]" />
+                <span>{location}</span>
+              </div>
+            ) : null}
           </div>
-          <Image
-            src={bannerImage}
-            alt={name}
-            width={320}
-            height={200}
-            className="w-full max-h-full block object-cover group-hover:scale-105 transition-transform duration-200"
-            priority
-          />
+
+          {excerpt && showExcerpt ? (
+            <p className="mt-5 line-clamp-3 text-sm leading-7 text-slate-600">
+              {excerpt}
+            </p>
+          ) : null}
+
+          <div className="mt-6 flex items-center justify-between border-t border-[#efe7da] pt-4">
+            <span className="text-sm font-medium text-slate-500">
+              Event details
+            </span>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors group-hover:text-[#f36a3d]">
+              View event
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
+          </div>
         </div>
-      </div>
+      </article>
     </Link>
   );
 };

@@ -12,12 +12,12 @@ export const navLinks = [
     label: "About Us",
   },
   {
-    href: "/blog",
-    label: "Blog",
+    href: "/blogs",
+    label: "Blogs",
   },
   {
-    href: "/event",
-    label: "Event",
+    href: "/events",
+    label: "Events",
   },
   {
     href: "/gallery",
