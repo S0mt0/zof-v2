@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { format } from "date-fns";
-import { ArrowUpRight, BookOpenText } from "lucide-react";
+import { BookOpenText } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -47,9 +47,9 @@ export default async function BlogsPage() {
               </div>
             </div>
 
-            <div className="relative mx-auto -mt-10 max-w-4xl px-4 sm:-mt-14 lg:-mt-18">
+            <div className="relative mx-auto -mt-10 max-w-3xl px-4 sm:-mt-14 lg:-mt-18">
               <div className="overflow-hidden bg-white shadow-[0_24px_70px_rgba(76,57,31,0.12)] ring-1 ring-[#efe6d7]">
-                <div className="grid gap-7 px-6 py-7 sm:px-8 sm:py-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-9 lg:px-10">
+                <div className="px-6 py-7 sm:px-8 sm:py-8 lg:px-10">
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f36a3d]">
                       Our Blog
@@ -57,51 +57,11 @@ export default async function BlogsPage() {
                     <h1 className="mt-4 text-4xl font-bold leading-tight text-slate-950 sm:text-5xl lg:text-[3.35rem]">
                       Stories shaped by care, continuity, and community.
                     </h1>
-                    <p className="mt-4 max-w-2xl text-base leading-8 text-slate-700 sm:text-lg">
-                      From field reflections to program updates, this is where
-                      we share the human side of the mission and the lessons we
-                      keep learning along the way.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col justify-between border-t border-[#efe7da] pt-5 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
-                    <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                    <p className="mt-4 max-w-xl text-base leading-7 text-slate-700 sm:text-lg">
                       The Zita-Onyeka Foundation blog brings together grounded
                       stories from outreach, education support, women
-                      empowerment, and community life. It is a space for insight
-                      that feels close, useful, and real.
+                      empowerment, and community life.
                     </p>
-
-                    <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                      <div className="rounded-[1.1rem] bg-[#faf7f2] px-4 py-3">
-                        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#f36a3d]">
-                          Stories
-                        </p>
-                        <p className="mt-1 text-2xl font-bold text-slate-950">
-                          {blogs.length}
-                        </p>
-                      </div>
-                      <div className="rounded-[1.1rem] bg-[#faf7f2] px-4 py-3">
-                        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#f36a3d]">
-                          Focus
-                        </p>
-                        <p className="mt-1 text-sm leading-6 text-slate-600">
-                          Outreach, learning, and practical support.
-                        </p>
-                      </div>
-                      <div className="rounded-[1.1rem] bg-[#faf7f2] px-4 py-3">
-                        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#f36a3d]">
-                          Connect
-                        </p>
-                        <Link
-                          href="/contact"
-                          className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#f36a3d]"
-                        >
-                          Share an idea
-                          <ArrowUpRight className="h-4 w-4" />
-                        </Link>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -248,9 +208,9 @@ export default async function BlogsPage() {
               <Link
                 key={blog.slug}
                 href={`/blogs/${blog.slug}`}
-                className="grid gap-6 py-8 transition-colors hover:bg-white/45 sm:grid-cols-[230px_1fr] sm:items-center sm:gap-8"
+                className="grid gap-6 py-8 sm:grid-cols-[230px_1fr] sm:items-center sm:gap-8 group"
               >
-                <div className="relative aspect-[1.18] overflow-hidden rounded-[1.35rem]">
+                <div className="relative aspect-[1.18] overflow-hidden">
                   <Image
                     src={blog.bannerImage || "/assets/img/blank-book.jpg"}
                     alt={blog.title}
@@ -269,7 +229,7 @@ export default async function BlogsPage() {
                       {format(blog.publishedAt || new Date(), "MMMM d, yyyy")}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-3xl font-bold leading-tight text-slate-950 underline-offset-4 transition-colors hover:text-primary sm:text-[2.15rem]">
+                  <h3 className="mt-4 text-2xl font-bold leading-tight text-slate-950 underline-offset-4 transition-colors group-hover:text-primary group-hover:underline sm:text-3xl">
                     {blog.title}
                   </h3>
                   <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-700">
